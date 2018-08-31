@@ -51,7 +51,7 @@ class Main extends Component {
 		return (
 			<HashRouter>
 				<div>
-					<h1>Mon Stats (OLD DATA DO NOT USE)</h1>
+					<h1>Mon Stats</h1>
 					<ul className="header">
 						<li>
 							<NavLink
