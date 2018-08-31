@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import overall from './data/overall.json';
+import './overall.css';
 
 class Overall extends Component {
 	
@@ -9,7 +10,17 @@ class Overall extends Component {
 	renderEntry(entry, key) {
 		return (
 			<li key={key}>
-				{entry.count} {entry.rate.toFixed(1)} {entry.mons}
+				<div className="in-a-row">
+					<div className="entry-field entry-mons">
+						{entry.mons.reduce((acc, m) => acc + ', ' + m)}
+					</div>
+					<div className="entry-field">
+						Win Rate: {entry.rate.toFixed(1)}
+					</div>
+					<div className="entry-field">
+						Count: {entry.count}
+					</div>
+				</div>
 			</li>
 		);
 	}
@@ -18,7 +29,7 @@ class Overall extends Component {
 	renderSection(section, key) {
 		return (
 			<div key={key}>
-				<h2>Rating: {section.min} to {section.max}</h2>
+				<h2>Rating {section.min} to {section.max}</h2>
 				<ul>
 					{section.mons.map((entry, i) => this.renderEntry(entry, i))}
 				</ul>
@@ -38,7 +49,6 @@ class Overall extends Component {
 		} else {
 			data = data.popular;
 		}
-		console.log(data);
 		return (
 			<div>
 				{data.map((section, i) => this.renderSection(section, i))}
