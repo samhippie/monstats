@@ -3,8 +3,20 @@ import mons from './data/mons.json';
 
 class Mon extends Component {
 
-	renderTeamList() {
+	renderTeam(team, key) {
+		return (
+			<li key={key}>
+				{team.reduce((acc, m) => acc + ', ' + m)}
+			</li>
+		);
+	}
 
+	renderTeamList(teams) {
+		return (
+			<ul>
+				{teams.map((team, i) => this.renderTeam(team, i))}
+			</ul>
+		);
 	}
 
 	renderEntry(entry, key) {
@@ -43,6 +55,8 @@ class Mon extends Component {
 				{this.renderPartnerList(section.popPartners)}
 				<h3>Top Partners</h3>
 				{this.renderPartnerList(section.topPartners)}
+				<h3>Popular Teams</h3>
+				{this.renderTeamList(section.popTeams)}
 			</div>
 		);
 
