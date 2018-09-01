@@ -6,13 +6,29 @@ import './overall.css';
 class Overall extends Component {
 	
 
+	renderMonLink(mon, key) {
+		return (
+			<div key={key} style={{paddingLeft: '4px'}}>
+				<Link to={'mon/' + mon}>{mon}</Link>, 
+			</div>
+		);
+	}
+
+	renderMonList(mons) {
+		return (
+			<div className="in-a-row">
+				{mons.map((mon, i) => this.renderMonLink(mon, i))}
+			</div>
+		)
+	}
+
 	//renders a row in a section, which has some pokemon, the count, and win rate
 	renderEntry(entry, key) {
 		return (
 			<li key={key}>
 				<div className="in-a-row">
 					<div className="entry-field entry-mons">
-						{entry.mons.reduce((acc, m) => acc + ', ' + m)}
+						{this.renderMonList(entry.mons)}
 					</div>
 					<div className="entry-field">
 						Win Rate: {entry.rate.toFixed(1)}%

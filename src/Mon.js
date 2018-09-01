@@ -1,12 +1,30 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import mons from './data/mons.json';
 
 class Mon extends Component {
 
+	renderMonLink(mon, key) {
+		return (
+			<div key={key} style={{paddingLeft: '4px'}}>
+				<Link to={mon}>{mon}</Link>, 
+			</div>
+		);
+	}
+
+	renderMonList(mons) {
+		return (
+			<div className="in-a-row">
+				{mons.map((mon,i) => this.renderMonLink(mon,i))}
+			</div>
+		)
+	}
+
+
 	renderTeam(team, key) {
 		return (
 			<li key={key}>
-				{team.reduce((acc, m) => acc + ', ' + m)}
+				{this.renderMonList(team)}
 			</li>
 		);
 	}
@@ -24,7 +42,7 @@ class Mon extends Component {
 			<li key={key}>
 				<div className="in-a-row">
 					<div className="entry-field entry-mons">
-						{entry.mon}
+						{this.renderMonLink(entry.mon, 0)}
 					</div>
 					<div className="entry-field">
 						Win Rate: {entry.rate.toFixed(1)}
@@ -65,7 +83,6 @@ class Mon extends Component {
 	render() {
 		const mon = this.props.match.params.mon;
 		const data = mons[mon];
-		console.log(data)
 		return (
 			<div>
 				<h1>{mon}</h1>
