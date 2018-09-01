@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import overall from './data/overall.json';
+import usage from './data/usage.json';
 import './overall.css';
 
 class Overall extends Component {
@@ -56,9 +56,9 @@ class Overall extends Component {
 	render() {
 		let data;
 		if(this.props.type === "single") {
-			data = overall.single;
+			data = usage.overall.single;
 		} else {
-			data = overall.double;
+			data = usage.overall.double;
 		}
 		if(this.props.sort === "top") {
 			data = data.top;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import mons from './data/mons.json';
+import usage from './data/usage.json';
 
 class Mon extends Component {
 
@@ -82,7 +82,7 @@ class Mon extends Component {
 
 	render() {
 		const mon = this.props.match.params.mon;
-		const data = mons[mon];
+		const data = usage.mons[mon];
 		return (
 			<div>
 				<h1>{mon}</h1>
