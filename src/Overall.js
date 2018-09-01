@@ -15,7 +15,7 @@ class Overall extends Component {
 						{entry.mons.reduce((acc, m) => acc + ', ' + m)}
 					</div>
 					<div className="entry-field">
-						Win Rate: {entry.rate.toFixed(1)}
+						Win Rate: {entry.rate.toFixed(1)}%
 					</div>
 					<div className="entry-field">
 						Count: {entry.count}
