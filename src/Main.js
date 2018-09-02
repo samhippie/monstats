@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, NavLink, HashRouter, Redirect } from 'react-router-dom';
 import Overall from './Overall';
 import Mon from './Mon';
+import usage from './data/usage.json';
 
 class Main extends Component {
 
@@ -110,6 +111,7 @@ class Main extends Component {
 							component={Mon}
 						/>
 					</div>
+					Last updated: {usage.lastUpdated}
 				</div>
 			</HashRouter>
 		);
